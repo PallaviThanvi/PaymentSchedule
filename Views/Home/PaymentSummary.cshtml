@@ -1,0 +1,71 @@
+﻿@model PaymentSummary
+<div class="row" style="margin-top: 20px; margin-bottom: 20px">
+        <table class="table table-striped table-bordered table-condensed table-sm">
+            <thead>
+                <tr>
+                    <th colspan="2" class="bg-warning text-center">Payment Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total Vehicle Price</td>
+                    <td>@Model.VehiclePrice.ToString("c")</td>
+                </tr>
+                <tr>
+                    <td>Total Deposit</td>
+                    <td>@Model.DepositAmount.ToString("c")</td>
+                </tr>
+                <tr>
+                    <td>Loan Amount</td>
+                    <td>@Model.LoanAmount.ToString("c")</td>
+                </tr>
+                <tr>
+                    <td>Rate Of Interest</td>
+                    <td>@Model.RateOfInterest%</td>
+                </tr>
+                <tr>
+                    <td>Maximum Repayment Period</td>
+                    <td>@Model.MaximumRepaymentPeriod months</td>
+                </tr>
+                <tr>
+                    <td>EMI per month</td>
+                    <td>@Model.MonthlyPayment.ToString("c")</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="font-weight:700; background-color:#def0f9">Additional Fees</td>
+                </tr>
+                <tr>
+                    <td>Arrangement Fee</td>
+                    <td>@Model.ArrangementFee.ToString("c")</td>
+                </tr>
+                <tr>
+                    <td>Completion Fee</td>
+                    <td>@Model.CompletionFee.ToString("c")</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+<div class="row">
+    <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#paymentschedule">Payment Schedule</button>
+    </div>
+
+    <br />
+    <div id="paymentschedule" class="collapse">
+        <div class="row" style="height:500px; overflow:scroll">
+            <table class="table table-striped table-bordered table-condensed table-sm">
+                <tr>
+                    <th>Payment Date</th>
+                    <th style="background-color: #def0f9">Payment Amount</th>
+                    <th style="background-color: #E7F7DF">Amount Due</th>
+                </tr>
+                @foreach (PaymentItem paymentItem in Model.PaymentItems)
+                {
+                    <tr>
+                        <td>@paymentItem.PaymentDate.ToString("dd/MM/yyyy")</td>
+                        <td>@paymentItem.PaymentAmount.ToString("c")</td>
+                        <td>@paymentItem.AmountDue.ToString("c")</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>

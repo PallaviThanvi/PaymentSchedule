@@ -1,0 +1,50 @@
+﻿@model LoanCalculationInput
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px">
+    <div class="span10">
+        <h3 style="font-weight: 500">Payment Schedule Calculator</h3>
+        <div>
+            <form class="form-horizontal" asp-action="NewLoan" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="VehiclePrice">Vehicle Price:</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="add-on">£</span>
+                        </div>
+                        <input asp-for="VehiclePrice" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DepositAmount">Deposit Amount:</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="add-on">£</span>
+                        </div>
+                        <input asp-for="DepositAmount" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DeliveryDate">Delivery Date:</label>
+                    <input asp-for="DeliveryDate" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Finance Options:</label>
+                    <select asp-for="FinanceYear" class="form-control">
+                        <option value="">Choose an option</option>
+                        <option value="1">1 Year</option>
+                        <option value="2">2 Years</option>
+                        <option value="3">3 Years</option>
+                    </select>
+                </div>
+
+                <div style="margin-top: 20px; margin-bottom: 20px">
+                    <button type="submit" class="btn btn-large btn-warning">Calculate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
